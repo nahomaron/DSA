@@ -1,5 +1,17 @@
 package AdvancedGraphs;
+/* Dijkstra's algorithm (Finding the shortest path)
+    - it is the go to algo for solving the shortest path in graph
+    - only for single-source - shortest path problems
+    - doesn't work with negative edges - that's Bellman-fords thing ...
+*/
 
+/* How it works
+  1. Set initial distances for all vertices INF except the source = 0
+  2. Start with unvisited vertex, usually the source as current vertex
+  3. For each unvisited neighbor, calculate new distance and update if smaller way is found
+  4. mark the current vertex visited
+  5. keep repeating from step 2 for other unvisited vertex until all vertices get visited
+ */
 import java.util.*;
 
 class Dijkstra{
