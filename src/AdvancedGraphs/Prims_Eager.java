@@ -12,9 +12,8 @@ public class Prims_Eager {
     }
 
     static class Node implements Comparable<Node>{
-        int parent, v, key;
-        Node(int parent, int v, int key){
-            this.parent = parent;
+        int v, key;
+        Node(int v, int key){
             this.v = v;
             this.key = key;
         }
@@ -44,7 +43,7 @@ public class Prims_Eager {
 
         PriorityQueue<Node> minHeap = new PriorityQueue<>();
         key[0] = 0;
-        minHeap.offer(new Node(-1, 0, 0));
+        minHeap.offer(new Node(0, 0));
 
         while(!minHeap.isEmpty()){
             Node curr = minHeap.poll();
@@ -53,14 +52,14 @@ public class Prims_Eager {
             if(inMST[vertex]) continue;
 
             inMST[vertex] = true;
-            parent[vertex] = curr.parent;
 
             for(Edge e : edges[vertex]){
                 int to = e.to, w = e.weight;
 
                 if(!inMST[to] && w < key[to]){
                     key[to] = w;
-                    minHeap.offer(new Node(vertex, to, key[to]));
+                    parent[to] = vertex;
+                    minHeap.offer(new Node(to, key[to]));
                 }
             }
         }

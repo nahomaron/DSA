@@ -1,8 +1,15 @@
 package AdvancedGraphs;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+/* Bellman-Ford algo (Finding shortest path)
+  - best for directed graph and with one or more negative edges
+
+  # how it works
+  1. set initial distance of all Infinity except the source = 0
+  2. for each edge update distance if shorter distance is found
+  3. check all edges (v - 1) times
+
+ */
+import java.util.*;
 
 public class Bellman_Ford {
     private static List<Edge> edges = new ArrayList<>();
@@ -48,7 +55,7 @@ public class Bellman_Ford {
         addEdge(1, 3, 2);
         addEdge(1, 4, 2);
 
-        int[] result = bellmanFord(5, 0);
+        int[] result = bellmanFord(5, 1);
 
         for(int i = 0; i < result.length; i++){
             String dist = (result[i] == Integer.MAX_VALUE) ? "INF" : "" + result[i];
